@@ -32,7 +32,7 @@ public class WinningNumbersTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    @ParameterizedTest
+    @ParameterizedTest(name = "결과 {1} 반환")
     @MethodSource("parameterProvider")
     @DisplayName("[n]등 당첨 결과 반환")
     void prize2(List<Integer> list, Ranking expect) {
@@ -58,7 +58,7 @@ public class WinningNumbersTest {
         );
     }
 
-    @ParameterizedTest
+    @ParameterizedTest(name = "[{index}] LottoNumbers의 Ranking은 {1}")
     @MethodSource("parameterProvider2")
     @DisplayName("보너스 볼이 포함되는 경우")
     void test2(LottoNumbers userLottoNumbers, Ranking expect) {

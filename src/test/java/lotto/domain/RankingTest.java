@@ -3,14 +3,16 @@ package lotto.domain;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.stream.Stream;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
 class RankingTest {
 
-    @ParameterizedTest
+    @ParameterizedTest(name = "[{index}] 일치 개수가 {0}개면 Ranking은 {2}")
     @MethodSource("parameterProvider")
+    @DisplayName("Ranking 찾기")
     void findRanking(int count, boolean isBonus, Ranking expect) {
         // given
 
