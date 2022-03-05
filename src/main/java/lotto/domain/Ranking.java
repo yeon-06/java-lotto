@@ -31,7 +31,7 @@ public enum Ranking {
         if (ranking.count != count) {
             return false;
         }
-        if (count == SECOND.getCount()) {
+        if (count == SECOND.count) {
             return ranking.hasBonusNumber == hasBonusNumber;
         }
         return true;
