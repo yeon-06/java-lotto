@@ -49,15 +49,15 @@ public class LottoNumbers {
     }
 
     private void validateDuplicateCount(List<Integer> numbers) {
-        int distinctCount = calDistinctCountFromArray(numbers);
+        long distinctCount = calculateDistinctCount(numbers);
 
         if (numbers.size() != distinctCount) {
             throw new IllegalArgumentException(DUPLICATE_ERROR);
         }
     }
 
-    private int calDistinctCountFromArray(List<Integer> numbers) {
-        return (int) numbers.stream()
+    private long calculateDistinctCount(List<Integer> numbers) {
+        return numbers.stream()
                 .distinct()
                 .count();
     }
