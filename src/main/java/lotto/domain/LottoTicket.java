@@ -29,10 +29,6 @@ public class LottoTicket {
         return new LottoTicket(lottoTicket);
     }
 
-    public List<LottoNumbers> getLottoTicket() {
-        return Collections.unmodifiableList(lottoTicket);
-    }
-
     public WinningResult calculateWinningStatistic(WinningNumbers winningNumbers) {
         List<Ranking> rankings = lottoTicket.stream()
                 .map(winningNumbers::calculateRanking)
@@ -42,6 +38,10 @@ public class LottoTicket {
     }
 
     public void addLottoTicket(LottoTicket otherLottoTicket) {
-        lottoTicket.addAll(otherLottoTicket.getLottoTicket());
+        lottoTicket.addAll(otherLottoTicket.lottoTicket);
+    }
+
+    public List<LottoNumbers> getLottoTicket() {
+        return Collections.unmodifiableList(lottoTicket);
     }
 }
