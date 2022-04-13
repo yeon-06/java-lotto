@@ -12,7 +12,8 @@ public class WinningResult {
     }
 
     public long calculatePrizeSum() {
-        return winningResult.entrySet().stream()
+        return winningResult.entrySet()
+                .stream()
                 .mapToLong(entry -> entry.getKey().multiple(entry.getValue()))
                 .sum();
     }
@@ -23,7 +24,8 @@ public class WinningResult {
 
     private void putValues(List<Ranking> rankings) {
         for (Ranking ranking : rankings) {
-            winningResult.put(ranking, winningResult.getOrDefault(ranking, 0) + 1);
+            int count = winningResult.getOrDefault(ranking, 0) + 1;
+            winningResult.put(ranking, count);
         }
     }
 }
