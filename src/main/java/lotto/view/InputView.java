@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class InputView {
 
@@ -48,7 +49,7 @@ public class InputView {
     private static List<Integer> convertToIntegerList(String[] array) {
         return Arrays.stream(array)
                 .map(InputView::convertToInt)
-                .collect(collectingAndThen(toList(), Collections::unmodifiableList));
+                .collect(Collectors.toUnmodifiableList());
     }
 
     public static int inputBonusBall() {
