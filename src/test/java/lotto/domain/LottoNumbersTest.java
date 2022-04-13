@@ -1,14 +1,12 @@
 package lotto.domain;
 
-import static java.util.stream.Collectors.collectingAndThen;
-import static java.util.stream.Collectors.toList;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatNoException;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -64,6 +62,6 @@ public class LottoNumbersTest {
     private List<Integer> getNumbers(int... numbers) {
         return Arrays.stream(numbers)
                 .boxed()
-                .collect(collectingAndThen(toList(), Collections::unmodifiableList));
+                .collect(Collectors.toUnmodifiableList());
     }
 }

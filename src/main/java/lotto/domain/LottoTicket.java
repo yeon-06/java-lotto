@@ -1,12 +1,10 @@
 package lotto.domain;
 
-import static java.util.stream.Collectors.collectingAndThen;
-import static java.util.stream.Collectors.toList;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class LottoTicket {
     private final List<LottoNumbers> lottoTicket;
@@ -39,7 +37,7 @@ public class LottoTicket {
         List<Ranking> rankings = lottoTicket.stream()
                 .map(winningNumbers::calculateRanking)
                 .filter(Objects::nonNull)
-                .collect(collectingAndThen(toList(), Collections::unmodifiableList));
+                .collect(Collectors.toUnmodifiableList());
         return new WinningResult(rankings);
     }
 

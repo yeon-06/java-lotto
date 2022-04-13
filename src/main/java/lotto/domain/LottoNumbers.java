@@ -1,11 +1,9 @@
 package lotto.domain;
 
-import static java.util.stream.Collectors.collectingAndThen;
-import static java.util.stream.Collectors.toList;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class LottoNumbers {
     private static final int LOTTO_COUNT = 6;
@@ -65,7 +63,7 @@ public class LottoNumbers {
     private List<LottoNumber> convertToLottoNumberList(List<Integer> numbers) {
         return numbers.stream()
                 .map(LottoNumber::of)
-                .collect(collectingAndThen(toList(), Collections::unmodifiableList));
+                .collect(Collectors.toUnmodifiableList());
     }
 
     public boolean contains(LottoNumber otherLottoNumber) {
