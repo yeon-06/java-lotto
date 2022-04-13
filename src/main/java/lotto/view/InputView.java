@@ -7,8 +7,11 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class InputView {
+
     private static final String INPUT_LOTTO_AMOUNT = "구입금액을 입력해 주세요.";
     private static final String INPUT_BONUS_NUMBER = "보너스 볼을 입력해 주세요.";
     private static final String INPUT_LOTTO_COUNT = "수동으로 구매할 로또 수를 입력해 주세요.";
@@ -16,6 +19,8 @@ public class InputView {
     private static final String BLANK = " ";
     private static final String EMPTY_STRING = "";
     private static final String DELIMITER = ",";
+
+    private static final Pattern numberPattern = Pattern.compile("[0-9]");
 
     private static final Scanner scanner = new Scanner(System.in);
 
@@ -59,11 +64,10 @@ public class InputView {
     }
 
     private static int convertToInt(String input) {
-        try {
+        Matcher matcher = numberPattern.matcher(input);
+        if (matcher.find()) {
             return Integer.parseInt(input);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(TYPE_ERROR);
         }
+        throw new IllegalArgumentException(TYPE_ERROR);
     }
-
 }
