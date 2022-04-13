@@ -71,12 +71,12 @@ public class LottoNumbers {
                 .anyMatch(lottoNumber -> lottoNumber.equals(otherLottoNumber));
     }
 
-    public int calculateSameCount(LottoNumbers otherLottoNumbers) {
+    public long calculateSameCount(LottoNumbers otherLottoNumbers) {
         return otherLottoNumbers.compareLottoNumbers(lottoNumbers);
     }
 
-    private int compareLottoNumbers(List<LottoNumber> lottoNumbers) {
-        return (int) lottoNumbers.stream()
+    private long compareLottoNumbers(List<LottoNumber> lottoNumbers) {
+        return lottoNumbers.stream()
                 .filter(this.lottoNumbers::contains)
                 .count();
     }
